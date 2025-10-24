@@ -13,7 +13,7 @@ DbConnect();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://task-manager-client-j6rm.onrender.com",
     credentials: true,
   })
 );
