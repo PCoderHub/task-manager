@@ -30,7 +30,11 @@ const registerUser = asyncHandler(async (req, res) => {
     }
   );
 
-  res.cookie("token", token);
+  res.cookie("token", token, {
+  httpOnly: true,
+  secure: true, // must be true in production (HTTPS)
+  sameSite: "none",
+});
 
   res.status(201).json({
     message: "User registered successfully",
@@ -59,7 +63,11 @@ const loginUser = asyncHandler(async (req, res) => {
     expiresIn: "1d",
   });
 
-  res.cookie("token", token);
+  res.cookie("token", token, {
+  httpOnly: true,
+  secure: true, // must be true in production (HTTPS)
+  sameSite: "none",
+});
 
   res.status(200).json({
     message: "User logged in successfully",
